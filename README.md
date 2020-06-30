@@ -1,4 +1,4 @@
-# JavaGuide面试突击版
+# 我的笔记
 
 - 在线阅读地址： https://zheng_chang_wei.gitee.io/mynote/#/
 - Github：https://github.com/zheng-chang-wei/myNote
