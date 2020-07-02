@@ -7,6 +7,7 @@
   * [Java集合](./docs/b-2Java集合.md)
   * [Java多线程](./docs/b-3Java多线程.md)
   * [jvm](./docs/b-4jvm.md)
+  * [锁](./docs/b-5lock.md)
   
 * 计算机基础
   * [计算机网络](./docs/c-1计算机网络.md)
