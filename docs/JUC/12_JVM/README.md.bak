@@ -1,11 +1,7 @@
 
 
 * JVM
-  * [Java基础](./docs/b-1面试题总结-Java基础.md)
-  * [Java集合](./docs/b-2Java集合.md)
-  * [Java多线程](./docs/b-3Java多线程.md)
-  * [jvm](./docs/b-4jvm.md)
-  * [锁](./docs/b-5lock.md)
-  * [线程池](./docs/b-6threadpool.md)
+  * [JVM体系结构](./JVM体系结构/README.md)
+
 
 
