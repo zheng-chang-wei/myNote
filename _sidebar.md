@@ -13,6 +13,9 @@
   * [1 Volatile和JMM内存模型的可见性](./docs/JUC/1_Volatile/volatile.md)
   * [2 谈谈CAS](./docs/JUC/2_CAS/CAS.md)
   * [3 谈谈原子类的ABA问题](./docs/JUC/3_原子类的ABA问题/README.md)
+  * [4 ArrayList为什么线程不安全](./docs/JUC/4_ArrayList为什么线程不安全/README.md)
+  * [5 TransferValue是什么](./docs/JUC/5_TransferValue是什么/README.md)
+  * [6 Java的锁](./docs/JUC/6_Java的锁/README.md)
   
 * 计算机基础
   * [计算机网络](./docs/c-1计算机网络.md)
