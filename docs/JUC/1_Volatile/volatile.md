@@ -202,7 +202,6 @@ class MyData {
 
 https://mp.weixin.qq.com/s/Oa3tcfAFO9IgsbE22C5TEg
 ## 2. Volatile不保证原子性
-# Volatile不保证原子性
 
 ### 2.1 前言
 
@@ -694,8 +693,9 @@ public class com.moxi.interview.study.thread.T1 {
 | 0xc7   | ifnonnull       | 不为null时跳转                                               |
 | 0xc8   | goto_w          | 无条件跳转(宽索引)                                           |
 | 0xc9   | jsr_w           | 跳转至指定的32位offset位置, 并将jsr_w的下一条指令地址压入栈顶 |
-## 3 Volatile禁止指令重排
 
+
+## 3 Volatile禁止指令重排
 计算机在执行程序时，为了提高性能，编译器和处理器常常会对指令重排，一般分为以下三种：
 
 ```
