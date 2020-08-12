@@ -10,7 +10,9 @@
   * [锁](./docs/b-5lock.md)
   * [线程池](./docs/b-6threadpool.md)
 * 学习笔记
-  * [1_Volatile和JMM内存模型的可见性](./docs/JUC/1_Volatile/volatile.md)
+  * [1 Volatile和JMM内存模型的可见性](./docs/JUC/1_Volatile/volatile.md)
+  * [2 谈谈CAS](./docs/JUC/2_CAS/CAS.md)
+  * [3 谈谈原子类的ABA问题](./docs/JUC/3_原子类的ABA问题/README.md)
   
 * 计算机基础
   * [计算机网络](./docs/c-1计算机网络.md)
