@@ -48,7 +48,7 @@ BlockingQueue   阻塞队列，排队拥堵，首先它是一个队列，而一�
 
 BlockingQueue阻塞队列是属于一个接口，底下有七个实现类
 
-- ArrayBlockQueue：由数组结构组成的有界阻塞队列
+- ArrayBlockingQueue：由数组结构组成的有界阻塞队列
 - LinkedBlockingQueue：由链表结构组成的有界（但是默认大小 Integer.MAX_VALUE）的阻塞队列
   - 有界，但是界限非常大，相当于无界，可以当成无界
 - PriorityBlockQueue：支持优先级排序的无界阻塞队列
