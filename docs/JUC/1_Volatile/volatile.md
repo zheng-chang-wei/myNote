@@ -985,19 +985,38 @@ DCL（双端检锁）机制不一定是线程安全的，原因是有指令重�
 - instance = memory;  // 3、设置instance指向刚刚分配的内存地址，此时instance != null，但是对象还没有初始化完成
 - instance(memory);   // 2、初始化对象
 
-这样就会造成什么问题呢？
+![volatile](images/volatile.png)
 
-也就是当我们执行到重排后的步骤2，试图获取instance的时候，会得到null，因为对象的初始化还没有完成，而是在重排后的步骤3才完成，因此执行单例模式的代码时候，就会重新在创建一个instance实例
+场景一: 有两个线程, 线程A, 和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回true(线程A还没有实例化完)然后线程B进入阻塞状态,等线程B拿到锁进入同步代码块的时候instance已经实例化完并且instance最新的值已经刷新回主存(因为同步代码块的unlock之前会把线程中的最新状态刷回主存)所以线程B在代码//3处会返回false, 不会再创建新的实例, 从而保证了单例模式. 也就是说这种情况下是不存在问题的.
 
-`指令重排只会保证串行语义的执行一致性（单线程），但并不会关系多线程间的语义一致性`
+场景二: 同样有两个线程,线程A和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回false, 此时instance已经完全初始化完成, 那么线程B直接返回初始化好的instance实例. 这种情况下也是没有问题的,能够按照DCL预期的效果实现单例.
 
-所以当一条线程访问instance不为null时，由于instance实例未必已初始化完成，这就造成了线程安全的问题
+场景三: 同样有两个线程,线程A和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回false, 但是此时的instance并没有完全实例化完, 这样线程B返回了一个没有被完全实例化完的instance, 那么线程B在拿这个instance进行调用代码//6的时候就并不能按照预期拿到age=18的结果,此时DCL的问题就出来了.
 
-所以需要引入volatile，来保证出现指令重排的问题，从而保证单例模式的线程安全性
+关于场景一和场景二不在多做解释,相信大家都能理解, DCL之所以出现问题就是因为场景三的存在, 虽然场景三出现个概率极小, 但是再小的概率在大量的访问下也是会被触发的. 
 
-```
-private static volatile SingletonDemo instance = null;
-```
+那么为什么会存在场景三呢?
+
+需要知道的是instance = new Singleton();这句代码并不是一个原子操作,他的操作大体上可以被拆分为三步
+
+1.分配内存空间
+
+2.实例化对象instance
+
+3.把instance引用指向已分配的内存空间,此时instance有了内存地址,不再为null了
+
+java是允许对指令进行重排序, 那么以上的三步的执行顺序就有可能是1-3-2. 在这种情况下, 如果线程A执行完1-3之后被阻塞了, 而恰好此时线程B进来了 此时的instance已经不为空了所以线程B走完代码//1以后就直接返回了这个还没有实例化好的instance, 所以在调用其后续的实例方法时就会得不到预期的结果
+
+既然问题找到了, 那么为什么volatile可以避免这个问题呢?
+
+关于volatile的相关解释说明我就不在做赘述了, 有很多相关的介绍文章,大家可以自行学习一下.
+如果你已经了解了volatile以后你会知道, volatile是会保证被修饰的变量的可见性(至于如何保证可见性请参考volatile介绍) 和 有序性
+
+volatile的有序性做一下简单的介绍, 被volatile修饰的变量不参与指令重排, 在操作volatile变量时 在变量操作之前的代码一定是执行完毕并且是可见的, 在变量操作之后的代码一定是还没有被执行的(详细介绍请参见volatile介绍)
+
+所以当instance被定义为 private volatile static Singleton instance的话就会保证在创建对象的时候的执行顺序一定是1-2-3的步骤, 从而保证了instance要么为null 要么是已经完全初始化好的对象, 从而避免了场景三的情况出现.
+
+
 
 #### 4.1.3 最终代码
 
