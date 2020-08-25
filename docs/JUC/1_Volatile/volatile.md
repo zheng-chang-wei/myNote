@@ -987,11 +987,11 @@ DCL（双端检锁）机制不一定是线程安全的，原因是有指令重�
 
 ![volatile](images/volatile.png)
 
-场景一: 有两个线程, 线程A, 和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回true'(线程A还没有实例化完)'然后线程B进入阻塞状态,等线程B拿到锁进入同步代码块的时候instance已经实例化完并且instance最新的值已经刷新回主存(因为同步代码块的unlock之前会把线程中的最新状态刷回主存)所以线程B在代码//3处会返回false, 不会再创建新的实例, 从而保证了单例模式. 也就是说这种情况下是不存在问题的.
+场景一: 有两个线程, 线程A, 和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回true `(线程A还没有实例化完)`然后线程B进入阻塞状态,等线程B拿到锁进入同步代码块的时候instance已经实例化完并且instance最新的值已经刷新回主存(因为同步代码块的unlock之前会把线程中的最新状态刷回主存)所以线程B在代码//3处会返回false, 不会再创建新的实例, 从而保证了单例模式. 也就是说这种情况下是不存在问题的.
 
-场景二: 同样有两个线程,线程A和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回false, '此时instance已经完全初始化完成', 那么线程B直接返回初始化好的instance实例. 这种情况下也是没有问题的,能够按照DCL预期的效果实现单例.
+场景二: 同样有两个线程,线程A和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回false, `此时instance已经完全初始化完成`, 那么线程B直接返回初始化好的instance实例. 这种情况下也是没有问题的,能够按照DCL预期的效果实现单例.
 
-场景三: 同样有两个线程,线程A和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回false, '但是此时的instance并没有完全实例化完', 这样线程B返回了一个没有被完全实例化完的instance, 那么线程B在拿这个instance进行调用代码//6的时候就并不能按照预期拿到age=18的结果,此时DCL的问题就出来了.
+场景三: 同样有两个线程,线程A和线程B, 线程A是初次访问getInstance()方法, 此时在代码//1 处instance == null为true, 进入同步代码块, 此时线程B也来访问getInstance()方法, 线程B在代码//1 处instance == null可能返回false, `但是此时的instance并没有完全实例化完`, 这样线程B返回了一个没有被完全实例化完的instance, 那么线程B在拿这个instance进行调用代码//6的时候就并不能按照预期拿到age=18的结果,此时DCL的问题就出来了.
 
 关于场景一和场景二不在多做解释,相信大家都能理解, DCL之所以出现问题就是因为场景三的存在, 虽然场景三出现个概率极小, 但是再小的概率在大量的访问下也是会被触发的. 
 
