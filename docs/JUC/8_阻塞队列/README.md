@@ -60,7 +60,7 @@ BlockingQueue阻塞队列是属于一个接口，底下有七个实现类
 
 
 
-这里需要掌握的是：ArrayBlockQueue、LinkedBlockingQueue、SynchronousQueue
+这里需要掌握的是：ArrayBlockingQueue、LinkedBlockingQueue、SynchronousQueue
 
 
 
