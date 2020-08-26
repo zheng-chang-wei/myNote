@@ -545,7 +545,7 @@ class MyResource {
     // 使用原子包装类，而不用number++
     private AtomicInteger atomicInteger = new AtomicInteger();
 
-    // 这里不能为了满足条件，而实例化一个具体的SynchronousBlockingQueue
+    // 这里不能为了满足条件，而实例化一个具体的SynchronousQueue
     BlockingQueue<String> blockingQueue = null;
 
     // 而应该采用依赖注入里面的，构造注入方法传入
