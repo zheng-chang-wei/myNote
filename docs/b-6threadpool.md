@@ -96,8 +96,6 @@ ExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(int coreP
 public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) {
     return new ScheduledThreadPoolExecutor(corePoolSize);
 }
-
-//ScheduledThreadPoolExecutor():
 public ScheduledThreadPoolExecutor(int corePoolSize) {
     super(corePoolSize, Integer.MAX_VALUE,
           DEFAULT_KEEPALIVE_MILLIS, MILLISECONDS,
