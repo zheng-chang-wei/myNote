@@ -8,9 +8,7 @@
 
 ## 4.1 MySQL
 
-> 作者：Guide哥。
->
-> **介绍:** Github 70k Star 项目  **[JavaGuide](https://github.com/Snailclimb/JavaGuide)**（公众号同名） 作者。每周都会在公众号更新一些自己原创干货。公众号后台回复“1”领取Java工程师必备学习资料+面试突击pdf。
+
 
 ### 4.1.1 精品推荐
 
@@ -104,9 +102,7 @@ MySQL采用的是类似继承的方式指定字符集的默认值，每个数据
 
 详细内容可以参考：   [MySQL字符集及校对规则的理解](https://www.cnblogs.com/geaozhang/p/6724393.html#MySQLyuzifuji)
 
-> 作者：Guide哥。
->
-> **介绍:** Github 70k Star 项目  **[JavaGuide](https://github.com/Snailclimb/JavaGuide)**（公众号同名） 作者。每周都会在公众号更新一些自己原创干货。公众号后台回复“1”领取Java工程师必备学习资料+面试突击pdf。
+
 
 ### 4.1.5 索引
 
@@ -152,7 +148,6 @@ select sql_no_cache count(*) from usr;
 
 ### 4.1.8 事物的四大特性(ACID)
 
-![事物的特性](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/事务特性.png)
 
 1. **原子性（Atomicity）：** 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；
 2. **一致性（Consistency）：** 执行事务前后，数据保持一致，多个事务对同一个数据读取的结果是相同的；
