@@ -9,7 +9,7 @@
   * [jvm](./docs/b-4jvm.md)
   * [锁](./docs/b-5lock.md)
   * [线程池](./docs/b-6threadpool.md)
-  * [线程池](./docs/b-7事务.md)
+  * [事务隔离级别](./docs/b-7事务.md)
 
 * 学习笔记
   * [1 Volatile和JMM内存模型的可见性](./docs/JUC/1_Volatile/volatile.md)
