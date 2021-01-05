@@ -1,6 +1,8 @@
 
 
 ------
+
+引用 https://blog.csdn.net/oneby1314/article/details/107938325
 mysql 的调优大纲
 
 1、慢查询的开启并捕获  （mysqldumpslow）

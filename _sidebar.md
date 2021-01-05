@@ -38,6 +38,7 @@
   * [MySQL](./docs/d-1-mysql.md)
   * [Redis](./docs/d-2-redis.md)
   * [MySQL优化](./docs/d-3-mysql-optimization.md)
+  * [MySQL-MVCC](./docs/d-4-mysql-MVCC.md)
   
 * 常用框架
   * [Spring](./docs/e-1spring.md)
