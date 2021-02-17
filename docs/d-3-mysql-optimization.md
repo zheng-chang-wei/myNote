@@ -66,6 +66,7 @@ float例如：
 4、money float（8,1） money>1048576  2^20后进度丢失 3*（8-1）-1=20
 5、money float（8,2） money>131072  2^17后精度丢失 3*（8-2）-1=17
 6、money float（8,3）money>16384  2^14 后精度丢失
+7、money float（8,4）money>1024  2^10 后精度丢失
 
 （3）定点型(精确)
 
