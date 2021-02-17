@@ -9,7 +9,7 @@
   * [jvm](./docs/b-4jvm.md)
   * [锁](./docs/b-5lock.md)
   * [线程池](./docs/b-6threadpool.md)
-  * [线程池](./docs/b-7事务.md)
+  * [事务隔离级别](./docs/b-7事务.md)
 
 * 学习笔记
   * [1 Volatile和JMM内存模型的可见性](./docs/JUC/1_Volatile/volatile.md)
@@ -38,6 +38,7 @@
   * [MySQL](./docs/d-1-mysql.md)
   * [Redis](./docs/d-2-redis.md)
   * [MySQL优化](./docs/d-3-mysql-optimization.md)
+  * [MySQL-MVCC](./docs/d-4-mysql-MVCC.md)
   
 * 常用框架
   * [Spring](./docs/e-1spring.md)
