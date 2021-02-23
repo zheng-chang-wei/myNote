@@ -349,7 +349,7 @@ pool-1-thread-5	 给用户:6 办理业务
     - FixedThreadPool和SingleThreadPool：
       - 运行的请求队列长度为：Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM
     - CacheThreadPool和ScheduledThreadPool
-      - 运行的请求队列长度为：Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM
+      - 运行的最大线程池数量为：Integer.MAX_VALUE，可能会创建大量的线程，从而导致OOM
 
 ## 手写线程池
 
